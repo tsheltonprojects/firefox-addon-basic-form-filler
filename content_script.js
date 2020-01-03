@@ -59,7 +59,7 @@ var addon_form_restore = function( data ) {
 		try{
 			var form = document.forms[0];
 			for ( var key in data ) {
-				var e = form.querySelector("*[name=" + key + "]");
+				var e = form.querySelector("*[name=\"" + key + "\"]");
 				if ( e == null ) continue;
 				
 				if ( e.nodeName == "INPUT" ) {
@@ -70,13 +70,13 @@ var addon_form_restore = function( data ) {
 							//skip hidden
 							break;
 						case "radio":
-							var e2 = form.querySelector("*[name=" + key + "][value='"+value+"']");
+							var e2 = form.querySelector("*[name=\"" + key + "\"][value='"+value+"']");
 							if ( e2 ) {
 								e2.checked = true;
 							}
 						break;
 						case "checkbox":
-							var e2 = form.querySelector("*[name=" + key + "][value='"+value+"']");
+							var e2 = form.querySelector("*[name=\"" + key + "\"][value='"+value+"']");
 							if ( e2 ) {
 								e2.checked = true;
 							}
