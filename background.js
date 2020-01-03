@@ -15,7 +15,7 @@ browser.runtime.onConnect.addListener(function( port ){
 	port.onMessage.addListener(function(message){
 		var data = JSON.parse( message );
 		console.log( data.command );
-
+		
 		if ( data.command == "get" ) {
 		
 			var s = browser.storage.local.get();
@@ -41,6 +41,7 @@ browser.runtime.onConnect.addListener(function( port ){
 
 //send to the content script
 browser.commands.onCommand.addListener(function(command) {
+
 	if ( tabs[ last_active_tab_id  ] ) {
 		if ( command == "form-fill-save" ) {
 			tabs[ last_active_tab_id ].port.postMessage({command: command});
