@@ -70,7 +70,14 @@ var addon_form_restore = function( data ) {
 					if ( e == null ) continue;
 					
 					if ( e.nodeName == "INPUT" ) {
-						var type = e.getAttribute("type").toLowerCase();
+						var type = e.getAttribute("type");
+
+						if ( type == null ) {
+							type = "text";
+						} else {
+							type = type.toLowerCase();
+						}
+
 						var value = e.getAttribute("value");
 						switch ( type ) {
 							case "hidden":
