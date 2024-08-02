@@ -148,7 +148,7 @@ var myPort = browser.runtime.connect({name:"port-from-form-filler"});
 myPort.onMessage.addListener(function(m) {
 
 	if ( m.command == "form-fill-save" ) {
-		if ( confirm( "Save form fill data?" ) ) {
+		if ( confirm( "Basic Form Filler: Save form fill data?" ) ) {
 			addon_form_fill();
 		}
 	} else  if ( m.command == "form-fill-restore" ) {
@@ -158,6 +158,9 @@ myPort.onMessage.addListener(function(m) {
 		if ( m != "failed" ) {
 			var data = JSON.parse( JSON.parse( m ) );
 			addon_form_restore( data );
+		} else {
+			var url = location.toString().split("#")[0];
+			alert( "Basic Form Filler: No data found for this page (based on the URL: " + url + ")" );
 		}
 	}
 })

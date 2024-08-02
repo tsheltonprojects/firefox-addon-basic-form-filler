@@ -54,7 +54,7 @@ browser.commands.onCommand.addListener(function(command) {
 				}
 				if ( command == "form-fill-restore" ) {
 					tabs[ currentTab.id ].port.postMessage({command: command});
-				}	
+				}
 			}
 
 		});
