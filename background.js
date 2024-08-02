@@ -8,6 +8,7 @@ browser.runtime.onConnect.addListener(function( port ){
 	
 	tabs[ port.sender.tab.id ] = {"tab": port.sender.tab, "port": port };
 
+//console.log( port.sender.tab.id );
 	port.onDisconnect.addListener( function( port ) {
 		delete tabs[ port.sender.tab.id ];
 	});
@@ -42,14 +43,22 @@ browser.runtime.onConnect.addListener(function( port ){
 //send to the content script
 browser.commands.onCommand.addListener(function(command) {
 
-	if ( tabs[ last_active_tab_id  ] ) {
-		if ( command == "form-fill-save" ) {
-			tabs[ last_active_tab_id ].port.postMessage({command: command});
-		}
-		if ( command == "form-fill-restore" ) {
-			tabs[ last_active_tab_id ].port.postMessage({command: command});
-		}	
-	}
+		browser.tabs.query({ active: true, currentWindow: true }).then(scopetabs => {
+			let currentTab = scopetabs[0]; // The currently focused tab
+			///console.log("Current Tab ID: ", currentTab.id);
+			//console.log(tabs);
+
+			if ( tabs[ currentTab.id  ] ) {
+				if ( command == "form-fill-save" ) {
+					tabs[ currentTab.id ].port.postMessage({command: command});
+				}
+				if ( command == "form-fill-restore" ) {
+					tabs[ currentTab.id ].port.postMessage({command: command});
+				}	
+			}
+
+		});
+
 });
 
 
