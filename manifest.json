@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Basic Form Filler",
-	"version": "1.3",
+	"version": "1.4",
 	"description": "WebExtensions basic form filler",
 	"background": {
 		"scripts": ["background.js"]
