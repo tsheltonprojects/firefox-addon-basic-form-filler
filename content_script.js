@@ -160,7 +160,7 @@ myPort.onMessage.addListener(function(m) {
 			addon_form_restore( data );
 		} else {
 			var url = location.toString().split("#")[0];
-			alert( "Basic Form Filler: No data found for this page (based on the URL: " + url + ")" );
+			alert( "Basic Form Filler: No data saved for the page\n" + url + "\n\n" + "Press Alt+Shift+Q to save data." );
 		}
 	}
 })

@@ -1,7 +1,7 @@
 {
 	"manifest_version": 2,
 	"name": "Basic Form Filler",
-	"version": "1.4",
+	"version": "1.5",
 	"description": "WebExtensions basic form filler",
 	"background": {
 		"scripts": ["background.js"]
@@ -16,7 +16,7 @@
 	"applications": {
 		"gecko": {
 			"id": "basicformfiller@tsheltonprojects",
-			"strict_min_version": "54.0"
+			"strict_min_version": "58.0"
 		}
 	},
 	"commands": {
